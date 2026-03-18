@@ -1,0 +1,17 @@
+[core_switches]
+switch-01 ansible_host=10.0.0.1
+switch-02 ansible_host=10.0.0.2
+
+[branch_routers]
+router-east ansible_host=192.168.10.1 ospf_network=192.168.10.0
+router-west ansible_host=192.168.20.1 ospf_network=192.168.20.0
+
+[cisco_devices:children]
+core_switches
+branch_routers
+
+[cisco_devices:vars]
+ansible_user=admin
+ansible_password=ciscosecret
+ansible_network_os=cisco.ios.ios
+ansible_connection=network_cli

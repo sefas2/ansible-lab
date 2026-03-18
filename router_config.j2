@@ -1,0 +1,10 @@
+!===================================================
+! Standard Baseline Configuration for {{ inventory_hostname }}
+!===================================================
+hostname {{ inventory_hostname }}
+!
+router ospf 1
+!router ID
+router-id {{ ansible_host }}
+!network
+network {{ ospf_network }} 0.0.0.255 area 0 

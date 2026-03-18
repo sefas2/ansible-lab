@@ -1,0 +1,20 @@
+!===================================================
+! Standard Baseline Configuration for {{ inventory_hostname }}
+!===================================================
+hostname {{ inventory_hostname }}
+!
+! Standard Global VLANs
+vlan 10
+ name Management
+vlan 20
+ name User_Data
+vlan 30
+ name Guest_WiFI
+!
+! Management Interface Setup
+interface Vlan10
+ description IN-BAND MANAGEMENT
+ ip address {{ ansible_host }} 255.255.255.0
+ no shutdown
+!
+! End of configuration

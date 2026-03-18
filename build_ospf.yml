@@ -1,0 +1,10 @@
+---
+- name: Generate OSPF config
+  hosts: branch_routers 
+  gather_facts: false
+  
+  tasks:
+    - name: Render jinja2 template to txt file for ospf
+      template:
+        src: router_config.j2
+        dest: "./{{ inventory_hostname }}_ospf.txt"

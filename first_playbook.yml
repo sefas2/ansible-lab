@@ -1,0 +1,9 @@
+---
+- name: My First Automation Run
+  hosts: cisco_devices
+  gather_facts: false
+
+  tasks:
+    - name: Test inventory variables
+      debug:
+        msg: "Ready to configure {{ inventory_hostname }} at IP {{ ansible_host }} using the {{ ansible_user }} account."
