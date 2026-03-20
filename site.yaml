@@ -1,0 +1,10 @@
+---
+- name: Initial Router Configuration
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Push the MOTD Banner
+      ansible.netcommon.cli_config:
+        config: |
+          banner motd line You logged in to the device!

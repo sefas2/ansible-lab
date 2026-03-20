@@ -1,0 +1,15 @@
+---
+- name: OSPF configuration
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: push ospf configuration
+      ansible.netcommon.cli_config:
+        config: |
+          router ospf
+          network 0.0.0.0/0 area 0
+
+    - name: save the config for ospf
+      ansible.netcommon.cli_command:
+        command: write memory

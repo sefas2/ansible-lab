@@ -1,17 +1,13 @@
 [core_switches]
-switch-01 ansible_host=10.0.0.1
-switch-02 ansible_host=10.0.0.2
+switch-01 ansible_host=127.0.0.1 ansible_port=2211 loopback_ip=1.1.1.1/32
+switch-02 ansible_host=127.0.0.1 ansible_port=2212 loopback_ip=2.2.2.2/32
 
 [branch_routers]
-router-east ansible_host=192.168.10.1 ospf_network=192.168.10.0
-router-west ansible_host=192.168.20.1 ospf_network=192.168.20.0
+router-east ansible_host=127.0.0.1 ansible_port=2221 loopback_ip=3.3.3.3/32
+router-west ansible_host=127.0.0.1 ansible_port=2222 loopback_ip=4.4.4.4/32
 
-[cisco_devices:children]
-core_switches
-branch_routers
-
-[cisco_devices:vars]
-ansible_user=admin
-ansible_password=ciscosecret
-ansible_network_os=cisco.ios.ios
+[all:vars]
+ansible_user=root
+ansible_password=cisco
+ansible_network_os=frr
 ansible_connection=network_cli
