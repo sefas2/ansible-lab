@@ -1,0 +1,48 @@
+services:
+  switch-01:
+    build: .
+    privileged: true
+    ports: 
+      - 2211:22
+    networks:
+      mgmt_net:
+        ipv4_address: 172.100.0.11
+  
+  switch-02:
+    build: .
+    privileged: true
+    ports: 
+      - 2212:22
+    networks:
+      mgmt_net:
+        ipv4_address: 172.100.0.12
+
+  router-east:
+    build: .
+    privileged: true
+    ports: 
+      - 2221:22
+    networks:
+      mgmt_net:
+        ipv4_address: 172.100.0.21
+
+  router-west:
+    build: .
+    privileged: true
+    ports: 
+      - 2222:22
+    networks:
+      mgmt_net:
+        ipv4_address: 172.100.0.22
+
+networks:
+  mgmt_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.100.0.0/24
+            
+          
+
+
+  
