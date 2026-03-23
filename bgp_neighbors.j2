@@ -1,0 +1,10 @@
+router bgp {{ bgp_asn }}
+  no bgp ebgp-requires-policy
+{% for host in groups['all'] %}
+{% if host != inventory_hostname %}
+  neighbor {{ hostvars[host]['loopback_ip'].split('/')[0] }} remote-as {{ hostvars[host]['bgp_asn'] }}
+  neighbor {{ hostvars[host]['loopback_ip'].split('/')[0] }} update-source lo
+  neighbor {{ hostvars[host]['loopback_ip'].split('/')[0] }} ebgp-multihop 2
+{% endif %}
+{% endfor %}
+

@@ -1,0 +1,18 @@
+---
+- name: Automated Network Backups
+  hosts: all
+  vars:
+    timestamp: "{{ lookup('pipe', 'date +%Y-%m-%d') }}"
+  gather_facts: false
+
+  tasks:
+    - name: Step 1 - Read the running configuration
+      ansible.netcommon.cli_command:
+        command: show running-config
+      register: config_output
+
+    - name: Step 2 - Save the output to a local text file
+      ansible.builtin.copy:
+        content: "{{ config_output.stdout }}"
+        dest: "{{ inventory_hostname }}_{{ timestamp }}_backup.txt"
+      delegate_to: localhost  

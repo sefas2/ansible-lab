@@ -1,10 +1,10 @@
 [core_switches]
-switch-01 ansible_host=127.0.0.1 ansible_port=2211 loopback_ip=1.1.1.1/32
-switch-02 ansible_host=127.0.0.1 ansible_port=2212 loopback_ip=2.2.2.2/32
+switch-01 ansible_host=127.0.0.1 ansible_port=2211 loopback_ip=1.1.1.1/32 bgp_asn=65011
+switch-02 ansible_host=127.0.0.1 ansible_port=2212 loopback_ip=2.2.2.2/32 bgp_asn=65012
 
 [branch_routers]
-router-east ansible_host=127.0.0.1 ansible_port=2221 loopback_ip=3.3.3.3/32
-router-west ansible_host=127.0.0.1 ansible_port=2222 loopback_ip=4.4.4.4/32
+router-east ansible_host=127.0.0.1 ansible_port=2221 loopback_ip=3.3.3.3/32 bgp_asn=65021
+router-west ansible_host=127.0.0.1 ansible_port=2222 loopback_ip=4.4.4.4/32 bgp_asn=65022
 
 [all:vars]
 ansible_user=root
