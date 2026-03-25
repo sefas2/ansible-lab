@@ -1,0 +1,12 @@
+---
+- name: Push OSPF configuration
+  ansible.netcommon.cli_config:
+    config: "{{ lookup('template', 'router_config.j2') }}"
+
+- name: Push the BGP neighbor template
+  ansible.netcommon.cli_config:
+    config: "{{ lookup('template', 'bgp_neighbors.j2') }}"
+
+- name: Save the configuration
+  ansible.netcommon.cli_command:
+    command: write memory

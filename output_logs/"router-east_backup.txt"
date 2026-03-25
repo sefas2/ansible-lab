@@ -1,0 +1,36 @@
+Building configuration...
+
+Current configuration:
+!
+frr version 8.4_git
+frr defaults traditional
+hostname b8e511cbb6e7
+domainname localdomain
+no ipv6 forwarding
+hostname router-east
+!
+ip router-id 127.0.0.1
+!
+interface lo
+ ip address 3.3.3.3/32
+exit
+!
+router bgp 65021
+ no bgp ebgp-requires-policy
+ neighbor 1.1.1.1 remote-as 65011
+ neighbor 1.1.1.1 ebgp-multihop 2
+ neighbor 1.1.1.1 update-source lo
+ neighbor 2.2.2.2 remote-as 65012
+ neighbor 2.2.2.2 ebgp-multihop 2
+ neighbor 2.2.2.2 update-source lo
+ neighbor 4.4.4.4 remote-as 65022
+ neighbor 4.4.4.4 ebgp-multihop 2
+ neighbor 4.4.4.4 update-source lo
+exit
+!
+router ospf
+ ospf router-id 127.0.0.1
+ network 0.0.0.0/0 area 0
+exit
+!
+end

@@ -1,10 +1,11 @@
 ---
-- name: Initial Router Configuration
+- name: Deploy Datacenter Routing Fabric
   hosts: all
   gather_facts: false
 
-  tasks:
-    - name: Push the MOTD Banner
-      ansible.netcommon.cli_config:
-        config: |
-          banner motd line You logged in to the device!
+  roles:
+    - layer2
+    - routing
+    - verify
+    - backup
+

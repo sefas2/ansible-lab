@@ -1,0 +1,5 @@
+---
+- name: Render Jinja2 template to local text files
+  template:
+    src: switch_config.j2
+    dest: "./{{ inventory_hostname }}_vlan.txt"
