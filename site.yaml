@@ -4,6 +4,8 @@
   gather_facts: false
 
   roles:
+    - hostname
+    - interfaces
     - layer2
     - routing
     - verify

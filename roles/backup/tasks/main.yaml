@@ -4,8 +4,3 @@
     command: show running-config
   register: config_output
 
-- name: Save the config
-  ansible.builtin.copy:
-    content: "{{ config_output.stdout }}"
-    dest: /home/sf/ansible_lab/output_logs/{{ inventory_hostname }}_{{ timestamp }}_backup.txt
-  delegate_to: localhost

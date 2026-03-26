@@ -1,0 +1,9 @@
+---
+- name: Push loopback IPs
+  ansible.netcommon.cli_config:
+    config: |
+     interface lo
+     ip address {{ loopback_ip }}
+- name: save the config
+    ansible.netcommon.cli_command:
+      command: write memory

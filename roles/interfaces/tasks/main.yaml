@@ -1,0 +1,7 @@
+---
+- name: Push loopback IPs
+  ansible.netcommon.cli_config:
+    config: |
+      interface lo
+        description LOOKBACK-{{ inventory_hostname }}
+        ip address {{ loopback_ip }}

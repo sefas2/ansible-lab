@@ -11,3 +11,17 @@
       - "'Idle' not in bgp_output.stdout"
     fail_msg: "CRITICAL: A BGP Neighbor is down!"
     success_msg: "PASS: All BGP Neighbors are fully operational."
+
+
+
+- name: Check Hostname
+  ansible.netcommon.cli_command:
+    command: show running-config | include {{ inventory_hostname }}
+  register: hostname_output
+
+- name: Confirm hostname
+  ansible.builtin.assert:
+    that:
+      - "'{{ inventory_hostname }}' in hostname_output.stdout"
+    fail_msg: "CRITICAL: Hostname has been changed!"
+    success_msg: "PASS: Hostname is correct!"

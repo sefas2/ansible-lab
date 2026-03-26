@@ -1,0 +1,6 @@
+---
+- name: Hostname Configuration
+  ansible.netcommon.cli_config:
+    config: |
+      hostname {{ inventory_hostname }}
+
