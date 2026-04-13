@@ -1,0 +1,19 @@
+---
+- name: Validate loopback IPs
+  hosts: routers
+  gather_facts: false
+
+  tasks: 
+    - name: See if loopback IP appers
+      ansible.netcommon.cli_command:
+        command: show interface lo
+      register: output
+    
+    - name: Print the output
+      ansible.builtin.debug:
+        msg: "Loopback_ip = {{ output.stdout }}" 
+
+    - name: Assert the output
+      ansible.builtin.assert:
+        that:
+          - "loopback_ip in output.stdout"
