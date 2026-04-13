@@ -1,6 +1,6 @@
 ---
 - name: Loopback config
-  hosts: all
+  hosts: routers
   gather_facts: false
 
   tasks:
@@ -8,7 +8,7 @@
       ansible.netcommon.cli_config:
         config: |
           interface lo
-          ip address {{ loopback_ip }}
+            ip address {{ loopback_ip }}
 
     - name: save the config
       ansible.netcommon.cli_command:

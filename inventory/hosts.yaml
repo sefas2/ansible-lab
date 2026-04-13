@@ -1,0 +1,18 @@
+---
+all:
+  children:
+    routers:
+      hosts:
+        router-east: 
+          ansible_host: 127.0.0.1
+          ansible_port: 2211
+        router-west: 
+          ansible_host: 127.0.0.1
+          ansible_port: 2212
+        router-north: 
+          ansible_host: 127.0.0.1
+          ansible_port: 2221
+        router-south: 
+          ansible_host: 127.0.0.1
+          ansible_port: 2222
+
